@@ -19,8 +19,8 @@ Sistema de gestión de reservas desarrollado con Node.js, Express y TypeScript.
 
 1. Clonar el repositorio:
 ```bash
-git clone [url-del-repositorio]
-cd reservoz
+git clone https://github.com/dev-ajras/template-ts-express-sequelize
+cd template-ts-express-sequelize
 ```
 
 2. Instalar dependencias:
@@ -34,7 +34,7 @@ Crear un archivo `.env` en la raíz del proyecto con las siguientes variables:
 DB_HOST=localhost
 DB_USER=tu_usuario
 DB_PASSWORD=tu_contraseña
-DB_NAME=reservoz
+DB_NAME=tu_db
 JWT_SECRET=tu_secreto_jwt
 ```
 
@@ -43,7 +43,7 @@ JWT_SECRET=tu_secreto_jwt
 # Asegúrate de tener MySQL corriendo
 # Crea la base de datos:
 mysql -u root -p
-CREATE DATABASE reservoz;
+CREATE DATABASE tu_db;
 ```
 
 ## Uso
