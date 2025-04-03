@@ -1,7 +1,3 @@
-# Reservoz - Sistema de Reservas
-
-Sistema de gestión de reservas desarrollado con Node.js, Express y TypeScript.
-
 ## Características
 
 - Autenticación de usuarios con JWT
