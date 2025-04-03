@@ -1,35 +1,25 @@
-# API de Usuarios
+# Reservoz - Sistema de Reservas
 
-API REST simple para gestión de usuarios desarrollada con TypeScript, Express y MySQL.
+Sistema de gestión de reservas desarrollado con Node.js, Express y TypeScript.
 
-## Estructura del Proyecto
+## Características
 
-```
-src/
-├── controllers/     # Controladores que manejan las peticiones HTTP
-│   └── usuariosController.ts
-├── models/         # Modelos de Sequelize
-│   └── Usuario.ts
-├── routes/         # Rutas de la API
-│   └── usuariosRouter.ts
-├── services/       # Lógica de negocio
-│   └── usuariosService.ts
-├── utils/          # Utilidades y configuraciones
-│   └── databaseService.ts
-└── index.ts        # Punto de entrada de la aplicación
-```
+- Autenticación de usuarios con JWT
+- Gestión de usuarios (creación y login)
+- Base de datos MySQL con Sequelize
+- API RESTful
 
 ## Requisitos Previos
 
 - Node.js (v14 o superior)
-- MySQL (v8 o superior)
+- MySQL
 - npm o yarn
 
 ## Instalación
 
 1. Clonar el repositorio:
 ```bash
-git clone https://github.com/dev-ajras/reservoz.git
+git clone [url-del-repositorio]
 cd reservoz
 ```
 
@@ -38,107 +28,78 @@ cd reservoz
 npm install
 ```
 
-3. Crear el archivo `.env` en la raíz del proyecto con las siguientes variables:
+3. Configurar variables de entorno:
+Crear un archivo `.env` en la raíz del proyecto con las siguientes variables:
 ```env
-PORT=3000
 DB_HOST=localhost
-DB_PORT=3306
-DB_USER=root
+DB_USER=tu_usuario
 DB_PASSWORD=tu_contraseña
 DB_NAME=reservoz
+JWT_SECRET=tu_secreto_jwt
 ```
 
-4. Crear la base de datos en MySQL:
-```sql
+4. Iniciar la base de datos:
+```bash
+# Asegúrate de tener MySQL corriendo
+# Crea la base de datos:
+mysql -u root -p
 CREATE DATABASE reservoz;
 ```
 
-5. Compilar el proyecto:
-```bash
-npm run build
-```
+## Uso
 
-6. Iniciar el servidor:
+### Desarrollo
 ```bash
 npm run dev
 ```
 
-## Endpoints Disponibles
-
-### Crear Usuario
-- **URL**: `/api/usuarios`
-- **Método**: `POST`
-- **Body**:
-```json
-{
-    "nombre": "Nombre del Usuario"
-}
-```
-- **Respuesta Exitosa** (201):
-```json
-{
-    "id": "uuid-generado",
-    "nombre": "Nombre del Usuario",
-    "createdAt": "2024-03-27T12:00:00.000Z",
-    "updatedAt": "2024-03-27T12:00:00.000Z"
-}
+### Producción
+```bash
+npm run build
+npm start
 ```
 
-### Obtener Usuarios
-- **URL**: `/api/usuarios`
-- **Método**: `GET`
-- **Respuesta Exitosa** (200):
-```json
-[
-    {
-        "id": "uuid-1",
-        "nombre": "Usuario 1",
-        "createdAt": "2024-03-27T12:00:00.000Z",
-        "updatedAt": "2024-03-27T12:00:00.000Z"
-    },
-    {
-        "id": "uuid-2",
-        "nombre": "Usuario 2",
-        "createdAt": "2024-03-27T12:00:00.000Z",
-        "updatedAt": "2024-03-27T12:00:00.000Z"
-    }
-]
+### Crear un nuevo usuario
+```bash
+ts-node src/scripts/createUser.ts <username> <password>
 ```
 
-## Estructura de Archivos
+## Estructura del Proyecto
 
-### Models
-Los modelos definen la estructura de datos y sus relaciones. En este caso, tenemos:
-- `Usuario.ts`: Define el modelo de Usuario con campos id (UUID) y nombre.
+```
+src/
+├── controllers/     # Controladores de la API
+├── models/          # Modelos de la base de datos
+├── services/        # Lógica de negocio
+├── scripts/         # Scripts de utilidad
+└── utils/           # Utilidades y configuraciones
+```
 
-### Controllers
-Los controladores manejan las peticiones HTTP y las respuestas:
-- `usuariosController.ts`: Maneja las rutas relacionadas con usuarios.
+## API Endpoints
 
-### Services
-Contiene la lógica de negocio:
-- `usuariosService.ts`: Implementa las operaciones CRUD para usuarios.
+### Autenticación
+- `POST /api/auth/login` - Iniciar sesión
 
-### Routes
-Define las rutas de la API:
-- `usuariosRouter.ts`: Define las rutas para el recurso de usuarios.
-
-### Utils
-Contiene utilidades y configuraciones:
-- `databaseService.ts`: Configuración de la conexión a MySQL con Sequelize.
-
-## Scripts Disponibles
-
-- `npm run build`: Compila el proyecto TypeScript
-- `npm run dev`: Inicia el servidor en modo desarrollo
-- `npm start`: Inicia el servidor en modo producción
-- `npm run watch`: Compila el proyecto en modo watch
+Crear usuario (a través del script)
 
 ## Tecnologías Utilizadas
 
-- TypeScript
+- Node.js
 - Express
+- TypeScript
 - MySQL
 - Sequelize
-- dotenv
-- cors 
+- JWT
+- Bcrypt
+
+## Contribución
+
+1. Fork el proyecto
+2. Crea una rama para tu feature (`git checkout -b feature/AmazingFeature`)
+3. Commit tus cambios (`git commit -m 'Add some AmazingFeature'`)
+4. Push a la rama (`git push origin feature/AmazingFeature`)
+5. Abre un Pull Request
+
+## Licencia
+
+Este proyecto está bajo la Licencia ISC. 

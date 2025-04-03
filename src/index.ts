@@ -13,7 +13,7 @@ app.use(cors());
 app.use(express.json());
 
 // Rutas
-app.use('/api/admin', usersRouter);
+app.use('/api/admin/login', usersRouter);
 
 async function initServer() {
     try {
