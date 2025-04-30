@@ -4,6 +4,7 @@ import dotenv from 'dotenv';
 dotenv.config();
 import { initDatabase } from './utils/databaseService';
 import usersRouter from './routes/UsersRouter';
+import articulosRouter from './routes/ArticulosRouter';
 import { setupAssociations } from './models/associations';
 
 const app = express();
@@ -14,6 +15,7 @@ app.use(express.json());
 
 // Rutas
 app.use('/api/admin/login', usersRouter);
+app.use('/api/libros', articulosRouter);
 
 async function initServer() {
     try {
